@@ -72,6 +72,20 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   }
 
+  #hotmart-sales-funnel {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+
+  #hotmart-sales-funnel.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
   @media (max-width: 480px) {
     .alert-bar {
       font-size: 13px;
@@ -84,6 +98,10 @@
 
     .video-wrap {
       padding: 0 16px 32px;
+    }
+
+    #hotmart-sales-funnel {
+      padding: 0 16px;
     }
   }
 </style>
@@ -122,6 +140,23 @@
     </div>
   </div>
 </div>
+
+<!-- HOTMART - Sales Funnel Widget -->
+<!--- sales funnel container --->
+<div id="hotmart-sales-funnel"></div>
+
+<!--- script load and setup --->
+<script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+<script>
+// Inicializa o widget
+checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+
+// Mostra o widget após 6min40s (400 segundos)
+setTimeout(function() {
+  document.getElementById('hotmart-sales-funnel').classList.add('show');
+}, 400000); // 400 segundos = 6min40s
+</script>
+<!-- HOTMART - Sales Funnel Widget -->
 
 </body>
 </html>
